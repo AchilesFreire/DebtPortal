@@ -22,5 +22,7 @@ namespace DebtPortal.ViewModels
         [StringLength(100, MinimumLength = 6, ErrorMessage = "The Password must be at least 6 characters.")]
         [DataType(DataType.Password)]
         public string? Password { get; set; }
+        public string? ConfirmPassword { get; set; }
+
     }
 }

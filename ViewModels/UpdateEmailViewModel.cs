@@ -4,8 +4,14 @@ namespace DebtPortal.ViewModels
 {
     public class UpdateEmailViewModel
     {
-        [Required(ErrorMessage = "The Email is a mandatory field.")]
-        [EmailAddress(ErrorMessage = "The Email must be a valid email address.")]
         public string? Email { get; set; }
+
+        public string? EmailConfirmation { get; set; }
+
+        public string? Password { get; set; }
+
+        public bool ConfirmEmailChange { get; set; }
+
+
     }
 }

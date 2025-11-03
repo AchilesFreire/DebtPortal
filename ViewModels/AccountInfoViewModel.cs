@@ -9,6 +9,17 @@ namespace DebtPortal.ViewModels
         public DebtorInfViewModel? DebtorInfo { get; set; }
         public DebtInfoViewModel? DebtInfo { get; set; }
 
+        public int DaysOverDue => 
+            DebtInfo != null 
+                && DebtInfo.LastPaymentDate != null 
+                ? (DateTime.Now - DebtInfo.LastPaymentDate).Days 
+                : 0;
+
+        public int OverDuePayments => 
+            DaysOverDue > 30 ? (DaysOverDue - 1) / 30 + 1 : 0;
+
+        public int ContactAttmpts => DaysOverDue; //One attempt per day ( yes, it's anoying ! )
+
         static public AccountInfoViewModel FromDto(AccountInfoDto dto)
         {
             return new AccountInfoViewModel

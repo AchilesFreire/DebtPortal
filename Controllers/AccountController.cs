@@ -161,11 +161,8 @@ namespace DebtPortal.Controllers
                 var (updateOk, apiCallError) = await _apiClient.UpdateAddressAsync(accountId, addressDto);
                 if (updateOk.Value)
                 {
-                    ModelState.AddModelError("", "");
-                    TempData["SuccessMessage"] = " Address updated successfully ";
                     await RefreshSessionAccountInfo();
-                    ModelState.AddModelError("", "");
-                    return View();
+                    RedirectToAction("Account","DashBoard");
                 }
                 else
                 {
@@ -187,7 +184,10 @@ namespace DebtPortal.Controllers
             {
                 return View(new UpdateEmailViewModel()
                 { 
-                    Email = accountInfoViewModel?.DebtorInfo?.Email
+                    Email = accountInfoViewModel?.DebtorInfo?.Email,
+                    EmailConfirmation = "",
+                    Password = "",
+                    ConfirmEmailChange = true
                 });
             }
             return View(new UpdateEmailViewModel());
@@ -199,6 +199,12 @@ namespace DebtPortal.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                if(!model.Email.Equals(model.EmailConfirmation) )
+                {
+                    ModelState.AddModelError("AddressError", "Email confirmation does'nt match ");
+                    return View(model);
+                }
                 var accountId = HttpContext.Session.GetString(SessionAccountIdKey);
 
 
