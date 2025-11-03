@@ -1,0 +1,68 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model DebtPortal.ViewModels.RegisterViewModel
+
+
+<form asp-action="Register" method="post">
+    <div class="row g-3">
+        <div class="col-12 col-lg-6 mb-3">
+            <div class="default-card">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        Register
+                    </div>
+                    <div class="card-body">
+                        <div asp-validation-summary="All" class="text-danger mb-2"></div>
+
+                        <div class="row g-2">
+                            <label asp-for="AccountId">Account ID</label>
+                            <input asp-for="AccountId" class="form-control" />
+                        </div>
+                        <div class="row g-2">
+                            <label asp-for="DateOfBirth">Date Of Birth</label>
+                            <input asp-for="DateOfBirth" class="form-control" type="date" />
+                        </div>
+                        <div class="row g-2">
+                            <label asp-for="Postcode">Post code</label>
+                            <input asp-for="Postcode" class="form-control" />
+                        </div>
+                        <div class="row g-2">
+                            <label asp-for="Email">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                        </div>
+                        <div class="row g-2">
+                            <label asp-for="Password">Password</label>
+                            <input asp-for="Password" class="form-control" type="password" />
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row g-2">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                        <div class="row g-2">
+                            <a asp-action="Login">Already have an account? Login here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+    </div>
+    
+</form>
+
+<div>
+    
+</div>

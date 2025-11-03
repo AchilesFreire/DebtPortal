@@ -1,0 +1,47 @@
+﻿@model DebtPortal.ViewModels.UpdateEmailViewModel
+
+@{
+    ViewData["Title"] = "Update Email";
+}
+
+
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+}
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @successMessage
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form asp-action="UpdateEmail" method="post">
+
+    <div class="row g-3">
+        <div class="col-12 col-lg-6 mb-3">
+            <div class="default-card">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        Update Email
+                    </div>
+                    <div class="card-body">
+                        <div asp-validation-summary="All" class="text-danger mb-2"></div>
+                        <div asp-validation-summary="All" class="text-text-info mb-2"></div>
+                        <div class="row g-2">
+                            <label asp-for="Email" class="form-label">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row g-2">
+                            <button type="submit" class="btn btn-primary">Update Email</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
